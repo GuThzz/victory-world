@@ -49,6 +49,31 @@ white-out, and a black face appears in one shot. Character lighting is wrong for
 exit. Speed is about 2 to 4 frames a second in the playable scene. `KNOWN-FAULTS.md` has the details and the
 evidence behind each line.
 
+## Credits
+
+This project stands on other people's work. The runtime is theirs; what is ours is a line of fixes and a way of
+working on top of it. If your work is here and is not named, open an issue and it will be.
+
+- **[VIctory](https://github.com/Marvisak/VIctory)** by Marvisak (GPL-3.0): the runtime itself, from the loader and
+  the console platform to the GPU host and the shader translator. Everything here builds on it, and our first rule
+  (no part of the game in a commit) is its asset policy. Upstream fixes we have taken since the fork point (sampler
+  LOD and bias, an anisotropic filter, a format family, rectangle interpolation) are on our working line and reach
+  `next` with its next update.
+- **[fxceless/victory-fork](https://github.com/fxceless/victory-fork)**: the fork both of our branches start from,
+  and the home of the pull requests we studied for frame time (#144, #188, #220, #253, #457, #462, #465, #604).
+  Those ideas belong to their authors; where one is merged, its commits keep their authorship.
+- **[JoshuuDev/victory-amd](https://github.com/JoshuuDev/victory-amd)**: merged whole into `next`. Its view guard is
+  the change that brought back the walls, ceilings and floors.
+- **[Trexies/victory-fork](https://github.com/Trexies/victory-fork)** (branch `VIwork`): the fix for blending on
+  integer render targets, and the translation and speed changes we are porting one by one.
+- **[Leonida Continued](https://github.com/ubiquitarianism/leonida)**: read as a reference for how some console
+  rules behave (buffer bounds, shared-memory rounds, ray-tracing intersection). Nothing is copied from it: where we
+  follow one of its rules we write our own version and cite the commit.
+- **Viewers of the stream**, who pointed us at pull requests and switches worth trying.
+
+How credit is kept in the code: merged forks keep their own commits and authors in `next`'s history, and a change
+ported by hand names the commit it came from in its message.
+
 ## Licence
 
 Everything in victory-world (the harness, the instructions, the known-faults page and the issue files) is under
