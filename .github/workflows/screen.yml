@@ -2,7 +2,7 @@ name: Screen
 
 # The first screen for inherited code, reduced to this repository's file kinds: a pull request that touches a
 # script, a workflow, agent or editor settings, or a binary file fails this check and lists what it touched. The
-# failure is a flag, not a verdict: a maintainer reads the diff, then re-runs the check once satisfied. Nothing
+# failure is a flag, not a verdict: it stays red, and a maintainer reads the whole diff before merging. Nothing
 # from the pull request is executed: this workflow reads the base and head trees with `git diff` only.
 
 on:
