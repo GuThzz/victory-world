@@ -24,4 +24,4 @@ jobs:
       - name: ffmpeg
         run: choco install ffmpeg -y --no-progress
       - name: node --test
-        run: node --test harness/
+        run: node --test
