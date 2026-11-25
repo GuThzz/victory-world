@@ -1,0 +1,69 @@
+name: Job
+description: A scoped piece of work, in one lane, with a done-when
+title: "[job] "
+labels: ["job"]
+body:
+  - type: input
+    id: goal
+    attributes:
+      label: Goal
+      description: One sentence; the title of the job.
+    validations:
+      required: true
+  - type: dropdown
+    id: lane
+    attributes:
+      label: Lane
+      description: One lane only; two lanes never own the same file.
+      options:
+        - Room and portal decision (the missing walls)
+        - Mesh geometry (stray triangles)
+        - Texture layout (scrambled patches)
+        - 64-lane shaders on 32-lane hosts
+        - Host-refused pipelines
+        - Cutscene white-out and screen-filling triangles
+        - Speed
+        - Harness and tools
+    validations:
+      required: true
+  - type: input
+    id: files
+    attributes:
+      label: Files owned
+      description: The files this job may change; "to be confirmed by the lead" when they are not yet clear.
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Symptom or gain
+      description: What is wrong today, or what the change gains, in plain words.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Run tags, figures, or the code path that shows the fault.
+  - type: textarea
+    id: ruled-out
+    attributes:
+      label: Ruled out
+      description: What has already been excluded, so nobody re-tests it.
+  - type: textarea
+    id: done-when
+    attributes:
+      label: Done when
+      description: The fixture that must fail before and pass after, and the run result where one is asked.
+    validations:
+      required: true
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      options:
+        - S
+        - M
+        - L
+    validations:
+      required: true

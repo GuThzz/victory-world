@@ -1,0 +1,22 @@
+# Raises this run's game to above-normal priority and says what it did (one line, for the run's console).
+# Other lanes compile while a run goes, and the title's pipeline workers run below normal priority, so they starve
+# without this (aftermath1: 2.1 translations a second against 17.8).
+# -Translate raises run-world.sh's warm-up translate instead, which the same compilers starve (852 s against 682 s
+# with it raised). The selection is shared with heavy-watch.mjs and shared between the two: see run-process.ps1.
+param([switch]$Translate)
+
+# run-process.ps1's own `param` block resets a dot-sourcing caller's switches of the same names, so it is
+# dot-sourced inside a child scope, with the value captured under a name it cannot reset first.
+$selection = & {
+  param($UseTranslate)
+  . "$PSScriptRoot/run-process.ps1"
+  Get-RunVictorySelection -Translate:$UseTranslate
+} $Translate
+$pick = @($selection.Process)
+$raised = @()
+foreach ($c in $pick) {
+  $p = Get-Process -Id $c.ProcessId -ErrorAction SilentlyContinue
+  if ($p) { try { $p.PriorityClass = "AboveNormal"; $raised += $c.ProcessId } catch { } }
+}
+if ($raised.Count -gt 0) { "priority: above normal for pid $($raised -join ', ') ($($selection.Rule))" }
+else { "priority: no victory.exe raised ($(@($selection.All).Count) found)" }
