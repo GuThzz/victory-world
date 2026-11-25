@@ -48,3 +48,9 @@ on the project's own line, confirmed in three runs of three. The opening cutscen
 white-out, and a black face appears in one shot. Character lighting is wrong for seconds at a time at the dormitory
 exit. Speed is about 2 to 4 frames a second in the playable scene. `KNOWN-FAULTS.md` has the details and the
 evidence behind each line.
+
+## Licence
+
+Everything in victory-world (the harness, the instructions, the known-faults page and the issue files) is under
+the GNU General Public License, version 3 (`LICENSE`), the same licence as the runtime. Contributions are
+accepted under it.
